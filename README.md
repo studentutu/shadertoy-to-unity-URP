@@ -1,5 +1,5 @@
 # shadertoy-to-unity-URP
-I will convert the hottest shaders from shadertoy to Universal SRP shader. Please support me for more to come :)
+I will convert the hottest shaders from shadertoy to Universal SRP shader. I will try to update often; so watch it and support me for more to come :)
 
 ## Licence
 As you know shadertoy projects are licenced as
