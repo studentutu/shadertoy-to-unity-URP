@@ -6,6 +6,10 @@ As you know shadertoy projects are licenced as
 [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
 Please look into the each shader code if it has another licence. Otherwise above licence must be considered!
 
+## Just Run It
+
+I have separated the each scenes (and materials). So just open the scene and press play :)
+
 ## Usage for simple (none-textured) etc.
 
 Just select the Plane on the sample scene, and change it's material shader (by shadertoy name or shadertoy end of link like 4dXGR4)
