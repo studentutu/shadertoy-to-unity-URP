@@ -1,0 +1,377 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mario-Icono-bits wtscRs
+  m_Shader: {fileID: 4800000, guid: 3db7e23ebd495654ea14c861c2c09398, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - AA: 2
+    - BRIGHTNESS: 1.2
+    - CAM_SHAKE: 1
+    - COLOR_SCHEME: 1
+    - EPSILON: 0.001
+    - FAR: 6
+    - FOG_STEPS: 20
+    - GAMMA: 1.4
+    - GRADIENT_DELTA: 0.015
+    - H: 0.2
+    - INTERSECTION_PRECISION: 0.00001
+    - ITER_FRAGMENT: 5
+    - ITER_GEOMETRY: 3
+    - LANE_BIAS: 0.5
+    - MAT_BACK_CLOUDS: 20
+    - MAT_CHARACTER_BASE: 50
+    - MAT_CHARACTER_FACE: 54
+    - MAT_CHARACTER_LONG_SCARF: 53
+    - MAT_CHARACTER_MAIN_CLOAK: 51
+    - MAT_CHARACTER_NECK_SCARF: 52
+    - MAT_FLYING_HELPERS: 40
+    - MAT_FLYING_HELPER_SCARF: 41
+    - MAT_FRONT_CLOUDS: 21
+    - MAT_PYRAMID: 1
+    - MAT_TERRAIN: 10
+    - MAT_TERRAIN_TRAIL: 11
+    - MAT_TOMB: 30
+    - MAT_TOMB_SCARF: 31
+    - MAX_ITER: 35
+    - MAX_RAYMARCH_DIST: 150
+    - MAX_TRACE_DISTANCE: 6
+    - MIN_RAYMARCH_DELTA: 0.00015
+    - NUM_OF_TRACE_STEPS: 100
+    - NUM_PLANETS: 1
+    - NUM_RAYS: 13
+    - NUM_STEPS: 8
+    - PI: 3.1415927
+    - RAY_STEPS: 150
+    - SATURATION: 0.65
+    - SEA_CHOPPY: 4
+    - SEA_FREQ: 0.16
+    - SEA_HEIGHT: 0.6
+    - SEA_SPEED: 0.8
+    - USE_MOUSE: 0
+    - VOLUMETRIC_STEPS: 19
+    - ZEROM: 0
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _Brightness: 0.4
+    - _BumpScale: 1
+    - _CharacterBloomScale: 0.7
+    - _CharacterDiffScale: 1.5
+    - _CharacterFogScale: 4.55
+    - _CharacterFrePower: 3.84
+    - _CharacterFreScale: 1.77
+    - _CharacterRotation: 0.17
+    - _CloudFogStrength: 0.5
+    - _CloudPyramidDistance: 0.145
+    - _CloudSpecPower: 24.04
+    - _CloudTransparencyMul: 0.9
+    - _Contrast: 0.83
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _Density: 0.1
+    - _DrawDistance: 70
+    - _DstBlend: 0
+    - _EnvironmentReflections: 1
+    - _ExposureOffset: 11.1
+    - _ExposurePower: 0.52
+    - _ExposureStrength: 0.09
+    - _FlyingHelperBloomScale: 2.61
+    - _FlyingHelperFogScale: 1.75
+    - _FlyingHelperFrePower: 1
+    - _FlyingHelperFreScale: 0.85
+    - _FogMul: -0.008
+    - _FogPow: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _HeadRotationX: -0.3
+    - _HeadRotationY: 0.29
+    - _HeadRotationZ: 0
+    - _HeadScarfRotation: -0.19
+    - _IncorrectGammaCorrect: 1
+    - _LongScarfMaxRad: 1.99
+    - _LongScarfRotX: 1.43
+    - _MainClothRotation: 0.3
+    - _MaxSteps: 64
+    - _MediumDetailStrength: 0.05
+    - _Metallic: 0
+    - _NadirFallOff: 1.91
+    - _NoiseAmp: 1
+    - _NoiseFreq: 2
+    - _OcclusionStrength: 1
+    - _OpacityThreshold: 0.95
+    - _PrismEyeWidth: 5.86
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Saturation: 1.21
+    - _SmallDetailStrength: 0.006
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SphereRadius: 1
+    - _SrcBlend: 1
+    - _StepSize: 0.02
+    - _SunScale: 15
+    - _SunSize: 26
+    - _Surface: 0
+    - _TerrainDistanceShadowPower: 0.11
+    - _TerrainFogPower: 2.11
+    - _TerrainGlitterPower: 3.2
+    - _TerrainGlitterRep: 7
+    - _TerrainMaxDistance: 30.04
+    - _TerrainRimPower: 5.59
+    - _TerrainRimSpecPower: 2.88
+    - _TerrainRimStrength: 1.61
+    - _TerrainSpecPower: 55.35
+    - _TerrainSpecStrength: 1.56
+    - _TombRepScale: 0.79
+    - _TombScarfRot: -0.88
+    - _VolumeSteps: 128
+    - _WorkflowMode: 1
+    - _ZWrite: 1
+    - _ZenithFallOff: 2.36
+    - brightness: 0.0015
+    - cloudalpha: 8
+    - cloudcover: 0.2
+    - clouddark: 0.5
+    - cloudlight: 0.3
+    - cloudscale: 1.1
+    - darkmatter: 0.3
+    - det: 0
+    - detail: 0.001
+    - distfading: 0.73
+    - fadeInTime: 0.2
+    - fadeOutTime: 0.01
+    - formuparam: 0.53
+    - impactFade: 0.3
+    - impactTime: 1
+    - iterations: 17
+    - loopSpeed: 0.1
+    - loopTime: 5
+    - moy: 0
+    - pi: 3.1415927
+    - planePos: 0.1
+    - saturation: 0.85
+    - sharp: 0.9
+    - skytint: 0.5
+    - speed: 0.01
+    - sphere1Rad: 0.7
+    - sphere2Rad: 0.2
+    - stepsize: 0.1
+    - tile: 0.85
+    - uniform_step: 0.5
+    - volsteps: 20
+    - waveHeight1: 0.005
+    - waveHeight2: 0.004
+    - waveHeight3: 0.001
+    - whiteTime: 0.3
+    - zoom: 0.8
+    m_Colors:
+    - RGB: {r: 0, g: 0, b: 0, a: 1}
+    - SEA_BASE: {r: 0, g: 0.09, b: 0.18, a: 1}
+    - SEA_WATER_COLOR: {r: 0.48, g: 0.54, b: 0.36, a: 1}
+    - _BackCloudCol: {r: 0.66176, g: 0.64807, b: 0.62284, a: 1}
+    - _BackCloudParams: {r: 7.12, g: 4.26, b: 1.68, a: 1}
+    - _BackCloudParamsA: {r: 6.37, g: 2.23, b: 2.07, a: 1}
+    - _BackCloudSpecCol: {r: 0.11029, g: 0.05193, b: 0.020275, a: 1}
+    - _BackCloudsOffsetA: {r: 24.87, g: -1.49, b: 0, a: 1}
+    - _BackCloudsPos: {r: 29.99, g: 13.61, b: -18.8, a: 1}
+    - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _BodyPos: {r: 0, g: -0.45, b: -0.03, a: 1}
+    - _CameraFOV: {r: 1.038, g: 0.78984, b: -1, a: 1}
+    - _CameraMovement: {r: 0.15, g: 0.1, b: 0.2, a: 0.25}
+    - _CameraPos: {r: 1, g: 2.2, b: 18.6, a: 1}
+    - _CharacterAOParams: {r: 0.03, g: 7.36, b: 0, a: 1}
+    - _CharacterCloakDarkColor: {r: 0.25735, g: 0.028557, b: 0.0056769, a: 1}
+    - _CharacterHeightTerrainMix: {r: 1.95, g: -30, b: 0, a: 1}
+    - _CharacterMainColor: {r: 0.60294, g: 0.1515, b: 0.062067, a: 1}
+    - _CharacterPosition: {r: 0.52, g: 2.35, b: 17.6, a: 1}
+    - _CharacterScale: {r: 0.4, g: 0.53, b: 0.38, a: 1}
+    - _CharacterTerrainCol: {r: 0.35294, g: 0.16016, b: 0.12197, a: 1}
+    - _CharacterTrailOffset: {r: 0.72, g: 0.01, b: 0.06, a: 1}
+    - _CharacterTrailScale: {r: 0.001, g: 0, b: 0.5, a: 1}
+    - _CharacterTrailWave: {r: 1.97, g: 0, b: 0.34, a: 1}
+    - _CharacterWhiteColor: {r: 0.9928, g: 1, b: 0.47794, a: 1}
+    - _CharacterYellowColor: {r: 0.88971, g: 0.34975, b: 0, a: 1}
+    - _CloudBackGlobalParams: {r: 0.16, g: 1.4, b: -0.01, a: 1}
+    - _CloudCol: {r: 1, g: 0.84926, b: 0.69853, a: 1}
+    - _CloudGlobalParams: {r: 0.123, g: 2.1, b: 0.5, a: 1}
+    - _CloudNoiseStrength: {r: 0.2, g: 0.16, b: 0.1, a: 1}
+    - _CloudNormalMod: {r: 0.26, g: -0.13, b: 1.22, a: 1}
+    - _CloudSpecCol: {r: 0.17647, g: 0.062284, b: 0.062284, a: 1}
+    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FacePosition: {r: 0, g: -0.01, b: 0.05, a: 1}
+    - _FaceSize: {r: 0.038, g: 0.05, b: 0.03, a: 1}
+    - _FlyingHelperCloakDarkColor: {r: 1, g: 0.090909, b: 0, a: 1}
+    - _FlyingHelperMainColor: {r: 0.85294, g: 0.11759, b: 0.012543, a: 1}
+    - _FlyingHelperMovement: {r: 0.44, g: 1.44, b: -2.98, a: 1}
+    - _FlyingHelperPos: {r: 2.15, g: 4.68, b: 14.4, a: 1}
+    - _FlyingHelperScale: {r: 0.25, g: 0.001, b: 0.3, a: 1}
+    - _FlyingHelperScarfScale: {r: 0.1, g: 0.001, b: 1.5, a: 1}
+    - _FlyingHelperScarfWindDetailParams: {r: 3.93, g: 0.005, b: -45.32, a: 1}
+    - _FlyingHelperScarfWindParams: {r: -0.06, g: 0.31, b: 0.47, a: 1}
+    - _FlyingHelperSideScarfOffset: {r: 0.16, g: -0.01, b: 0, a: 1}
+    - _FlyingHelperSideScarfScale: {r: 0.06, g: 0.001, b: 0.8, a: 1}
+    - _FlyingHelperWhiteColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FlyingHelperYellowColor: {r: 1, g: 0.3931, b: 0, a: 1}
+    - _FlyingScarfSideWindParams: {r: 2.46, g: -1.59, b: -0.05, a: 0.21}
+    - _FrontCloudParams: {r: 5.02, g: 3.79, b: 5, a: 1}
+    - _FrontCloudParamsA: {r: 3.04, g: 0.16, b: 2, a: 1}
+    - _FrontCloudParamsB: {r: 1.34, g: 0.3, b: 3.15, a: 1}
+    - _FrontCloudsOffsetA: {r: -9.1, g: 3.04, b: 0, a: 1}
+    - _FrontCloudsOffsetB: {r: -2.97, g: 3.72, b: -0.05, a: 1}
+    - _FrontCloudsPos: {r: 9.91, g: 8.6, b: -12.88, a: 1}
+    - _HeadPos: {r: 0, g: -0.04, b: 0.01, a: 1}
+    - _HeadScarfPosition: {r: -0.005, g: -0.16, b: -0.01, a: 1}
+    - _HeadScarfScale: {r: 0.18, g: 0.2, b: 0.03, a: 1}
+    - _Horizon: {r: 0.96324, g: 0.80163, b: 0.38954, a: 1}
+    - _LargeWaveDetail: {r: 0.25, g: 0.73, b: 0, a: 1}
+    - _LargeWaveOffset: {r: -3.65, g: 4.41, b: -11.64, a: 1}
+    - _LargeWavePowStre: {r: 0.6, g: 2.96, b: -2.08, a: 1}
+    - _LightDir: {r: -0.23047, g: 0.87328, b: -0.42927, a: 1}
+    - _LongScarfPos: {r: 0.01, g: -0.15, b: 0.09, a: 1}
+    - _LongScarfScale: {r: 0.05, g: 1.25, b: 0.001, a: 1}
+    - _LongScarfWindStrength: {r: 0.3, g: 4.52, b: 5.2, a: 0.02}
+    - _LowerLeftLegA: {r: -0.02, g: -0.67, b: -0.059999, a: 1}
+    - _LowerLeftLegB: {r: -0.02, g: -0.77, b: 0.12, a: 1}
+    - _LowerLeftLegParams: {r: 0.028, g: 0.03, b: 0.01, a: 1}
+    - _LowerRightLegA: {r: 0.07, g: -0.61, b: 0.09, a: 1}
+    - _LowerRightLegB: {r: 0.07, g: -0.91, b: 0.22, a: 1}
+    - _LowerRightLegParams: {r: 0.028, g: 0.03, b: 0.01, a: 1}
+    - _MainClothBotCutPos: {r: 0, g: -0.52, b: 0, a: 1}
+    - _MainClothDetail: {r: 6, g: 0.04, b: 1.3, a: 1}
+    - _MainClothPosition: {r: 0, g: -0.12, b: 0, a: 1}
+    - _MainClothScale: {r: 0.3, g: 0.68, b: 0.31, a: 1}
+    - _MediumWaveDetail: {r: 2, g: 50, b: 0, a: 1}
+    - _MediumWaveOffset: {r: 0.3, g: -2, b: 0.1, a: 1}
+    - _Nadir: {r: 1, g: 0.93103, b: 0, a: 1}
+    - _NoiseAnim: {r: 0, g: -1, b: 0, a: 1}
+    - _PlaneParams: {r: 7.64, g: 10.85, b: 3.76, a: 1}
+    - _PrismEyeScale: {r: 0.7, g: 1.9, b: 51.5, a: 1}
+    - _PrismScale: {r: 1, g: 1.9, b: 1, a: 1}
+    - _PyramidCol: {r: 0.69853, g: 0.40389, b: 0.22086, a: 1}
+    - _PyramidEyeOffset: {r: 2, g: -4.9, b: 0, a: 1}
+    - _PyramidHeightFog: {r: 38.66, g: 1.3, b: 0, a: 1}
+    - _PyramidNoisePrams: {r: 1.5, g: 1, b: 1, a: 1}
+    - _PyramidPos: {r: 0, g: 10.9, b: -50, a: 1}
+    - _PyramidScale: {r: 34.1, g: 24.9, b: 18, a: 1}
+    - _SmallWaveDetail: {r: 3.19, g: 16, b: 6.05, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SunColor: {r: 1, g: 0.95441, b: 0.77206, a: 1}
+    - _SunPosition: {r: 0.2, g: 56, b: -40.1, a: 1}
+    - _SunStar: {r: 14.7, g: 1.47, b: 0.1, a: 1}
+    - _TerrainAOParams: {r: 0.01, g: 0.02, b: 2, a: 1}
+    - _TerrainCol: {r: 0.56618, g: 0.29249, b: 0.1915, a: 1}
+    - _TerrainDistanceShadowColor: {r: 0.70588, g: 0.4644, b: 0.36851, a: 1}
+    - _TerrainRimColor: {r: 0.16176, g: 0.13131, b: 0.098724, a: 1}
+    - _TerrainShadowColor: {r: 0.48529, g: 0.13282, b: 0, a: 1}
+    - _TerrainShadowParams: {r: 0.12, g: 5.2, b: 88.7, a: 0.28}
+    - _TerrainSpecColor: {r: 1, g: 0.77637, b: 0.53676, a: 1}
+    - _TombBevelParams: {r: 0.44, g: 0.66, b: 0.01, a: 1}
+    - _TombCutOutScale: {r: 0.39, g: 0.06, b: -14.92, a: 1}
+    - _TombMainColor: {r: 0.64706, g: 0.38039, b: 0.27451, a: 1}
+    - _TombPosition: {r: 5, g: 5, b: 9.28, a: 1}
+    - _TombScale: {r: 0.07, g: 0.5, b: 0.006, a: 1}
+    - _TombScarfColor: {r: 0.38971, g: 0.10029, b: 0.10029, a: 1}
+    - _TombScarfOffset: {r: 0, g: 0.46, b: 0, a: 1}
+    - _TombScarfScale: {r: 0.03, g: 0.002, b: 0.5, a: 1}
+    - _TombScarfWindParams: {r: -1.61, g: 6, b: 0.05, a: 1}
+    - _UpperLeftLegA: {r: -0.02, g: -0.37, b: 0.01, a: 1}
+    - _UpperLeftLegB: {r: -0.02, g: -0.67, b: -0.059999, a: 1}
+    - _UpperLeftLegParams: {r: 0.026, g: 1, b: 1, a: 1}
+    - _UpperRightLegA: {r: 0.07, g: -0.5, b: 0.02, a: 1}
+    - _UpperRightLegB: {r: 0.07, g: -0.61, b: 0.09, a: 1}
+    - _UpperRightLegParams: {r: 0.026, g: 1, b: 1, a: 1}
+    - _WindDirection: {r: -0.27, g: -0.12, b: 0, a: 1}
+    - _WindSpeed: {r: 2, g: 0.6, b: 0, a: 1}
+    - _Zenith: {r: 0.77941, g: 0.5898, b: 0.41263, a: 1}
+    - cam: {r: 0, g: 0, b: 10, a: 1}
+    - gro: {r: 0, g: 0, b: 0, a: 1}
+    - iMouse: {r: 0, g: 0, b: 0, a: 0}
+    - innerColor: {r: 0.7, g: 0.7, b: 0.7, a: 0.1}
+    - lgt: {r: 0, g: 0, b: 0, a: 0}
+    - lig: {r: -0.4, g: 0.3, b: 0.7, a: 1}
+    - mouse: {r: 0, g: 0, b: 0, a: 0}
+    - origin: {r: -1, g: 0.7, b: 0, a: 1}
+    - outerColor: {r: 1, g: 1, b: 1, a: 0}
+    - planet: {r: 0, g: 0, b: 0, a: 1}
+    - skycolour1: {r: 0.2, g: 0.4, b: 0.6, a: 1}
+    - skycolour2: {r: 0.4, g: 0.7, b: 1, a: 1}
+    - sph1: {r: 0, g: 0, b: 0, a: 1}
+    - sphere1Pos: {r: 0, g: 0, b: 0, a: 1}
+    - sphere2Pos: {r: 1, g: 0, b: 0, a: 1}
+    - sun: {r: 0, g: 0, b: 0, a: 1}
+    - sunDir: {r: -0.666, g: 0.333, b: 0.666, a: 1}
+--- !u!114 &4313033545916621372
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
