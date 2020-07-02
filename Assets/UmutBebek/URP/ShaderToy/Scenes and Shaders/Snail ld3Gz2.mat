@@ -342,7 +342,7 @@ Material:
     - skycolour1: {r: 0.2, g: 0.4, b: 0.6, a: 1}
     - skycolour2: {r: 0.4, g: 0.7, b: 1, a: 1}
     - sph1: {r: 0, g: 0, b: 0, a: 1}
-    - sunDir: {r: -0.666, g: 0.333, b: 0.666, a: 1}
+    - sunDir: {r: 1.2, g: -0.05, b: 1.33, a: 1}
 --- !u!114 &4313033545916621372
 MonoBehaviour:
   m_ObjectHideFlags: 11

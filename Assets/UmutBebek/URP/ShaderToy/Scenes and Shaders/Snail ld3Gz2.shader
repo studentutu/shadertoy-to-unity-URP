@@ -727,14 +727,14 @@ float3 shadeOpaque(in float3 ro , in float3 rd , in float t , in float m , in fl
     }
 
 
-   float3 hal = normalize(sunDir - rd);
+   float3 hal = normalize(sunDir.xyz - rd);
    float fre = clamp(1.0 + dot(nor , rd) , 0.0 , 1.0);
    float occ = calcAO(pos , nor) * focc;
    float sss = calcSSS(pos , nor);
    sss = sss * occ + fre * occ + (0.5 + 0.5 * fre) * pow(abs(matInfo.x - 0.2) , 1.0) * occ;
 
-   float dif1 = clamp(dot(nor , sunDir) , 0.0 , 1.0);
-   float sha = calcSoftShadow(pos , sunDir , 20.0);
+   float dif1 = clamp(dot(nor , sunDir.xyz) , 0.0 , 1.0);
+   float sha = calcSoftShadow(pos , sunDir.xyz , 20.0);
    dif1 *= sha * fsha;
    float spe1 = clamp(dot(nor , hal) , 0.0 , 1.0);
 
@@ -750,7 +750,7 @@ float3 shadeOpaque(in float3 ro , in float3 rd , in float t , in float m , in fl
   col *= mateD;
 
   col += 0.4 * sss * (float3 (0.15 , 0.1 , 0.05) + float3 (0.85 , 0.9 , 0.95) * dif1) * (0.05 + 0.95 * occ) * mateS; // sss 
-  col = pow(col , float3 (0.6 , 0.8 , 1.0));
+  col = pow(abs(col) , float3 (0.6 , 0.8 , 1.0));
 
   col += float3 (1.0 , 1.0 , 1.0) * 0.2 * pow(spe1 , 1.0 + mateK.x) * dif1 * (0.04 + 0.96 * pow(fre , 4.0)) * mateK.x * mateK.y; // sun lobe1 
   col += float3 (1.0 , 1.0 , 1.0) * 0.1 * pow(spe1 , 1.0 + mateK.x / 3.0) * dif1 * (0.1 + 0.9 * pow(fre , 4.0)) * mateK.x * mateK.y; // sun lobe2 
@@ -770,10 +770,10 @@ float3 shadeTransparent(in float3 ro , in float3 rd , in float t , in float m , 
     float3 pos = ro + t * rd;
     float3 nor = calcNormalTransparent(pos , 0.002);
     float fre = clamp(1.0 + dot(rd , nor) , 0.0 , 1.0);
-    float3 hal = normalize(sunDir - rd);
+    float3 hal = normalize(sunDir.xyz - rd);
     float3 ref = reflect(-rd , nor);
     float spe1 = clamp(dot(nor , hal) , 0.0 , 1.0);
-    float spe2 = clamp(dot(ref , sunDir) , 0.0 , 1.0);
+    float spe2 = clamp(dot(ref , sunDir.xyz) , 0.0 , 1.0);
 
 
     float ds = 1.6 - col.y;
@@ -849,7 +849,7 @@ float3 background(in float3 d)
       col = smax(col , tmp , 0.5);
    }
 
-  return pow(col , float3 (3.5 , 3.0 , 6.0)) * 0.2;
+  return pow(abs(col) , float3 (3.5 , 3.0 , 6.0)) * 0.2;
 }
 
 
@@ -882,16 +882,16 @@ float3 render(in float3 ro , in float3 rd , in float2 q)
 
  // -- -- -- -- -- -- -- -- -- -- -- -- -- -- - 
 
-float sun = clamp(dot(rd , sunDir) , 0.0 , 1.0);
+float sun = clamp(dot(rd , sunDir.xyz) , 0.0 , 1.0);
 col += 1.0 * float3 (1.5 , 0.8 , 0.7) * pow(sun , 4.0);
 
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- - 
 
-col = pow(col , float3 (0.45 , 0.45 , 0.45));
+col = pow(abs(col) , float3 (0.45 , 0.45 , 0.45));
 
 col = float3 (1.05 , 1.0 , 1.0) * col * (0.7 + 0.3 * col * max(3.0 - 2.0 * col , 0.0)) + float3 (0.0 , 0.0 , 0.04);
 
-col *= 0.3 + 0.7 * pow(16.0 * q.x * q.y * (1.0 - q.x) * (1.0 - q.y) , 0.1);
+col *= 0.3 + 0.7 * pow(abs(16.0 * q.x * q.y * (1.0 - q.x) * (1.0 - q.y) ), 0.1);
 
 return clamp(col , 0.0 , 1.0);
 }
@@ -920,8 +920,8 @@ float2 fragCoord = ((input.screenPos.xy) / (input.screenPos.w + FLT_MIN)) * _Scr
 
         float3 ro = float3 (-0.4 , 0.2 , 0.0) + 2.2 * float3 (cos(an) , 0.0 , sin(an));
         float3 ta = float3 (-0.6 , 0.2 , 0.0);
-        float3x3 ca = setCamera(ro , ta);
-        float3 rd = normalize(mul(ca , float3 (p , -2.8)));
+        float3x3 ca = setCamera(ro, ta);
+        float3 rd = normalize(mul(ca , float3 (p.x, p.y , -2.8)));
 
         float3 col = render(ro , rd , q);
 
@@ -939,7 +939,7 @@ float2 fragCoord = ((input.screenPos.xy) / (input.screenPos.w + FLT_MIN)) * _Scr
 
             float3 ro = float3 (-0.4 , 0.2 , 0.0) + 2.2 * float3 (cos(an) , 0.0 , sin(an));
             float3 ta = float3 (-0.6 , 0.2 , 0.0);
-            float3x3 ca = setCamera(ro , ta);
+            float3x3 ca = setCamera(ro, ta);
             float3 rd = normalize(ca * float3 (p , -2.8));
 
               col += render(ro , rd , q);
