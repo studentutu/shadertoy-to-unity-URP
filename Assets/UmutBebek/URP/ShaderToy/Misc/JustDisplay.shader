@@ -1,4 +1,4 @@
-﻿Shader "UmutBebek/URP/ShaderToy/Just Diplay"
+﻿Shader "UmutBebek/URP/ShaderToy/Just Display"
 {
     Properties
     {
@@ -88,7 +88,7 @@
         {
             half4 fragColor = half4 (1 , 1 , 1 , 1);
             float2 fragCoord = ((input.screenPos.xy) / (input.screenPos.w + FLT_MIN)); // *_ScreenParams.xy; no multply because it is already on 0,1 space
-            fragColor = SAMPLE_TEXTURE2D(_Channel0, sampler_Channel0, fragCoord);
+            fragColor = SAMPLE_TEXTURE2D(_Channel0, sampler_Channel0, fragCoord);            
             return fragColor;
         }
         ENDHLSL

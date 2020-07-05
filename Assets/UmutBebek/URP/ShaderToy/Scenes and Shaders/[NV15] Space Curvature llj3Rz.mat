@@ -340,7 +340,7 @@ Material:
     - _WindSpeed: {r: 2, g: 0.6, b: 0, a: 1}
     - _Zenith: {r: 0.77941, g: 0.5898, b: 0.41263, a: 1}
     - gro: {r: 0, g: 0, b: 0, a: 1}
-    - iMouse: {r: 77, g: 62, b: -345, a: -174}
+    - iMouse: {r: 185, g: 106, b: -409, a: -160}
     - innerColor: {r: 0.7, g: 0.7, b: 0.7, a: 0.1}
     - lgt: {r: 0, g: 0, b: 0, a: 0}
     - lig: {r: -0.4, g: 0.3, b: 0.7, a: 1}

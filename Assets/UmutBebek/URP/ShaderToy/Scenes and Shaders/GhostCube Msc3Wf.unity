@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -356,13 +356,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf207ed3cc3ad2a4da585da150afd4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BufferA: {fileID: 4800000, guid: bcc035c7e93a0514c836d2263dbbcd93, type: 3}
-  UsePassForBufferA: 
+  Texture1: {fileID: 0}
+  Texture2: {fileID: 0}
+  Texture3: {fileID: 0}
+  Texture4: {fileID: 0}
+  BufferA: {fileID: 4800000, guid: 2d31af4803269534fb26422b220f1e1c, type: 3}
+  UsePassForBufferA: A
   BufferB: {fileID: 0}
   UsePassForBufferB: 
   BufferC: {fileID: 0}
   UsePassForBufferC: 
   BufferD: {fileID: 0}
   UsePassForBufferD: 
-  MainImage: {fileID: 4800000, guid: d9eeb0e92d4f24048b5fbc5f070406fa, type: 3}
+  MainImage: {fileID: 4800000, guid: 326b4929950447c4cb0cb7fc1ff27b9f, type: 3}
   UsePassForMainImage: A

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mouse Tutorial XlyBzt
-  m_Shader: {fileID: 4800000, guid: f1c46c3a51f23f14e966f0ace27f789a, type: 3}
+  m_Name: notebook drawings XtVGD1
+  m_Shader: {fileID: 4800000, guid: c6a07b218a4c86a4fa852a3098149238, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,8 +32,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Channel1:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 82d5fcce437b9464bb91c0bc280f81d1, type: 3}
+        m_Scale: {x: 3.55, y: 4.49}
         m_Offset: {x: 0, y: 0}
     - _Channel2:
         m_Texture: {fileID: 0}
@@ -65,6 +65,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - AA: 2
+    - AngleNum: 3
     - BRIGHTNESS: 1.2
     - CAM_SHAKE: 1
     - COLOR_SCHEME: 1
@@ -95,12 +96,14 @@ Material:
     - NUM_RAYS: 13
     - NUM_STEPS: 8
     - PI: 3.1415927
+    - PI2: 6.2831855
     - RAY_STEPS: 150
     - SATURATION: 0.65
     - SEA_CHOPPY: 4
     - SEA_FREQ: 0.16
     - SEA_HEIGHT: 0.6
     - SEA_SPEED: 0.8
+    - SampNum: 8
     - USE_MOUSE: 0
     - VOLUMETRIC_STEPS: 19
     - ZEROM: 0
@@ -328,7 +331,7 @@ Material:
     - _WindSpeed: {r: 2, g: 0.6, b: 0, a: 1}
     - _Zenith: {r: 0.77941, g: 0.5898, b: 0.41263, a: 1}
     - gro: {r: 0, g: 0, b: 0, a: 1}
-    - iMouse: {r: 218, g: 150, b: -374, a: -309}
+    - iMouse: {r: 0, g: 0, b: 0, a: 0}
     - innerColor: {r: 0.7, g: 0.7, b: 0.7, a: 0.1}
     - lgt: {r: 0, g: 0, b: 0, a: 0}
     - lig: {r: -0.4, g: 0.3, b: 0.7, a: 1}

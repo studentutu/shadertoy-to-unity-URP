@@ -1,4 +1,4 @@
-﻿Shader "UmutBebek/URP/ShaderToy/Rhodium liquid carbon llK3Dy pass1"
+﻿Shader "UmutBebek/URP/ShaderToy/Rhodium liquid carbon llK3Dy BufferA"
 {
     Properties
     {
@@ -20,10 +20,10 @@
             // that can match multiple render pipelines. If a RenderPipeline tag is not set it will match
             // any render pipeline. In case you want your subshader to only run in LWRP set the tag to
             // "UniversalRenderPipeline"
-            Tags{"RenderType" = "Transparent" 
+            Tags{"RenderType" = "Opaque" 
             "RenderPipeline" = "UniversalRenderPipeline" 
             "IgnoreProjector" = "True"
-        "Queue" = "Transparent"}
+        /*"Queue" = "Transparent"*/}
             LOD 300
 
             // ------------------------------------------------------------------
@@ -38,8 +38,8 @@
             //Tags{"LightMode" = "UniversalForward"}
 
             //Blend[_SrcBlend][_DstBlend]
-            Blend One Zero
-            ZWrite Off ZTest Always
+            /*Blend One Zero
+            ZWrite Off ZTest Always*/
             //ZWrite[_ZWrite]
             //Cull[_Cull]
 
