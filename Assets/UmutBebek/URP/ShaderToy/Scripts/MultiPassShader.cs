@@ -139,6 +139,41 @@ namespace UmutBebek.URP.ShaderToy
                     Graphics.Blit(_rtA2, _rtA1, _m1);
             }
 
+            if (BufferB != null)
+            {
+                if (_m2 == null) _m2 = new Material(BufferB);
+                if (!string.IsNullOrWhiteSpace(UsePassForBufferB))
+                {
+                    var buffers = UsePassForBufferB.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < buffers.Length; i++)
+                    {
+                        if (buffers[i] == "A")
+                            _m1.SetTexture("_Channel" + i, _change ? _rtA2 : _rtA1); //reverse because it is rendered before
+                        if (buffers[i] == "B")
+                            _m1.SetTexture("_Channel" + i, _change ? _rtB1 : _rtB2); //through
+                        if (buffers[i] == "C")
+                            _m1.SetTexture("_Channel" + i, _change ? _rtC1 : _rtC2); //through
+                        if (buffers[i] == "D")
+                            _m1.SetTexture("_Channel" + i, _change ? _rtD1 : _rtD2); //through
+                        if (buffers[i] == "1")
+                            _m1.SetTexture("_Channel" + i, Texture1);
+                        if (buffers[i] == "2")
+                            _m1.SetTexture("_Channel" + i, Texture2);
+                        if (buffers[i] == "3")
+                            _m1.SetTexture("_Channel" + i, Texture3);
+                        if (buffers[i] == "4")
+                            _m1.SetTexture("_Channel" + i, Texture4);
+                    }
+                }
+
+                if (_change)
+                {
+                    Graphics.Blit(_rtB1, _rtB2, _m2);
+                }
+                else
+                    Graphics.Blit(_rtB2, _rtB1, _m2);
+            }
+
             //if(a1) a1.texture = _rt1a;
             //if(a2) a2.texture = _rt1b;
 
