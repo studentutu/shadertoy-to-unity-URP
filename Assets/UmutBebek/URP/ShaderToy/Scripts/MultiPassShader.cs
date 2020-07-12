@@ -51,16 +51,16 @@ namespace UmutBebek.URP.ShaderToy
             int width = Screen.width + Screen.width % 2;
             int height = Screen.height + Screen.height % 2;
             int depth = 32;
-            _rtA1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
-            _rtA2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
-            _rtB1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
-            _rtB2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
-            _rtC1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
-            _rtC2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
-            _rtD1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
-            _rtD2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
-            _rtM1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
-            _rtM2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);  //buffer must be floating point RT
+            _rtA1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
+            _rtA2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
+            _rtB1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
+            _rtB2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
+            _rtC1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
+            _rtC2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
+            _rtD1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
+            _rtD2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
+            _rtM1 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
+            _rtM2 = new RenderTexture(width, height, depth, RenderTextureFormat.ARGBFloat);  //buffer must be floating point RT
             _rtA1.useMipMap = true;
             _rtA2.useMipMap = true;
             _rtB1.useMipMap = true;
@@ -202,6 +202,7 @@ namespace UmutBebek.URP.ShaderToy
                         if (buffers[i] == "4")
                             _m1.SetTexture("_Channel" + i, Texture4);
                     }
+
                     if (_change)
                         Graphics.Blit(_rtM1, _rtM2, _m5);
                     else
