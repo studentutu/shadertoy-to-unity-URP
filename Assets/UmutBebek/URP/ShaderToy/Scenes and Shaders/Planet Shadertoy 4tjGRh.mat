@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Planet Shadertoy 4tjGRh
+  m_Shader: {fileID: 4800000, guid: 16fe667904dafd0408bc4769f8fd9ddd, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Channel0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Channel3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - ASTEROID_DISPLACEMENT: 0.1
+    - ASTEROID_EPSILON: 0
+    - ASTEROID_MAX_DISTANCE: 1.1
+    - ASTEROID_NUM_BOOL_SUB: 7
+    - ASTEROID_NUM_STEPS: 11
+    - ASTEROID_RADIUS: 0.13
+    - ASTEROID_TRESHOLD: 0.001
+    - ATMOSPHERE_E: 12.3
+    - ATMOSPHERE_FNUM_IN_SCATTER: 0
+    - ATMOSPHERE_FNUM_IN_SCATTER_LOW: 0
+    - ATMOSPHERE_FNUM_OUT_SCATTER: 0
+    - ATMOSPHERE_FNUM_OUT_SCATTER_LOW: 0
+    - ATMOSPHERE_G_M: -0.85
+    - ATMOSPHERE_K_M: 0.0025
+    - ATMOSPHERE_K_R: 0.166
+    - ATMOSPHERE_NUM_IN_SCATTER: 7
+    - ATMOSPHERE_NUM_IN_SCATTER_LOW: 4
+    - ATMOSPHERE_NUM_OUT_SCATTER: 5
+    - ATMOSPHERE_NUM_OUT_SCATTER_LOW: 2
+    - ATMOSPHERE_SCALE_H: 0
+    - ATMOSPHERE_SCALE_L: 0
+    - DEG_TO_RAD: 0
+    - EARTH_ATMOSPHERE: 5
+    - EARTH_CLOUDS: 1
+    - EARTH_RADIUS: 1000
+    - FBM_STEPS: 4
+    - MAX1: 10000
+    - RING_DETAIL_DISTANCE: 40
+    - RING_HEIGHT: 2
+    - RING_INNER_RADIUS: 1500
+    - RING_OUTER_RADIUS: 2300
+    - RING_VOXEL_STEPS: 25
+    - RING_VOXEL_STEP_SIZE: 0.03
+    - SEA_CHOPPY: 4
+    - SEA_EPSILON: 0
+    - SEA_FREQ: 0.16
+    - SEA_HEIGHT: 0.6
+    - SEA_ITER_FRAGMENT: 5
+    - SEA_ITER_GEOMETRY: 3
+    - SEA_NUM_STEPS: 7
+    - SEA_SPEED: 0.8
+    - TERRAIN_NUM_STEPS: 140
+    - llamelScale: 5
+    m_Colors:
+    - ATMOSPHERE_C_R: {r: 0.3, g: 0.7, b: 1, a: 1}
+    - RING_COLOR_1: {r: 0.42, g: 0.3, b: 0.2, a: 1}
+    - RING_COLOR_2: {r: 0.41, g: 0.51, b: 0.52, a: 1}
+    - SEA_BASE: {r: 0.1, g: 0.19, b: 0.22, a: 1}
+    - SEA_WATER_COLOR: {r: 0.8, g: 0.9, b: 0.6, a: 1}
+    - SUN_COLOR: {r: 0.3, g: 0.21, b: 0.165, a: 1}
+    - SUN_DIRECTION: {r: 0.940721, g: 0.28221625, b: 0.18814418, a: 1}
+    - iMouse: {r: 0, g: 0, b: 0, a: 0}
+    - m2: {r: 0.8, g: -0.6, b: 0.6, a: 0.8}
+    - sea_octave_m: {r: 1.6, g: 1.2, b: -1.2, a: 1.6}
+    - terrainM2: {r: 1.6, g: -1.2, b: 1.2, a: 1.6}
+--- !u!114 &4313033545916621372
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ed distance functions 4dfXDn
-  m_Shader: {fileID: 4800000, guid: daa27f20089fa334bb2dbb8fb08d3573, type: 3}
+  m_Name: Digital Brain 4sl3Dr
+  m_Shader: {fileID: 4800000, guid: fa6c928952d0f174c9b4efd851fe81a1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Channel0:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ee30a5deca2c5f24db819f8af90f65df, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Channel1:
@@ -35,25 +35,9 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - BRIGHTNESS: 0.9
-    - GAMMA: 1.3
-    - RAY_STEPS: 70
-    - SATURATION: 0.85
-    - SHADOW_STEPS: 50
-    - det: 0
-    - detail: 0.00005
-    - vibration: 0
+    m_Floats: []
     m_Colors:
-    - AMBIENT_COLOR: {r: 0.8, g: 0.83, b: 1, a: 1}
-    - ENERGY_COLOR: {r: 1, g: 0.7, b: 0.4, a: 1}
-    - FLOOR_COLOR: {r: 1, g: 0.7, b: 0.9, a: 1}
-    - LIGHT_COLOR: {r: 0.85, g: 0.9, b: 1, a: 1}
-    - ambdir: {r: 0, g: 0, b: 1, a: 1}
-    - energy: {r: 0.01, g: 0.01, b: 0.01, a: 1}
     - iMouse: {r: 0, g: 0, b: 0, a: 0}
-    - lightdir: {r: 0.5, g: -0.3, b: -1, a: 1}
-    - origin: {r: 0, g: 3.11, b: 0, a: 1}
 --- !u!114 &4313033545916621372
 MonoBehaviour:
   m_ObjectHideFlags: 11
