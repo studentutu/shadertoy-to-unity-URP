@@ -250,7 +250,6 @@ GameObject:
   - component: {fileID: 1579940901}
   - component: {fileID: 1579940905}
   - component: {fileID: 1579940906}
-  - component: {fileID: 1579940907}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -345,41 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379895239534be14193099c0ddeecbc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!328 &1579940906
-VideoPlayer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579940900}
-  m_Enabled: 0
-  m_VideoClip: {fileID: 32900000, guid: 30c1330cc05513041a9b16c255b55e45, type: 3}
-  m_TargetCameraAlpha: 1
-  m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 0}
-  m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
-  m_TargetMaterialProperty: _Channel0
-  m_RenderMode: 3
-  m_AspectRatio: 2
-  m_DataSource: 0
-  m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
-  m_TargetAudioSources:
-  - {fileID: 0}
-  m_DirectAudioVolumes:
-  - 1
-  m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
-  m_Looping: 1
-  m_WaitForFirstFrame: 1
-  m_FrameReadyEventEnabled: 0
---- !u!114 &1579940907
+--- !u!114 &1579940906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -391,17 +356,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf207ed3cc3ad2a4da585da150afd4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Texture1: {fileID: 2800000, guid: 04a3aac601576b641a567fa2e49da5e1, type: 3}
-  Texture2: {fileID: 2800000, guid: f080e8ba51fb44d43829dcfb518e27bc, type: 3}
-  Texture3: {fileID: 2800000, guid: 68a3acf861408d54d89e17c192d97074, type: 3}
-  Texture4: {fileID: 0}
-  BufferA: {fileID: 4800000, guid: 6eaf891a6aa4e7041ba288ff48db5cfc, type: 3}
-  UsePassForBufferA: 1,2,3
+  Texture1: {fileID: 0}
+  Texture2: {fileID: 8900000, guid: 33a03c927af97c0459d7eccb30979cad, type: 2}
+  Texture3: {fileID: 8900000, guid: ba15790e90fb7334ba9b5a12312d6b21, type: 2}
+  Texture4: {fileID: 2800000, guid: a2e1b743629a8674a9a3965d555c379b, type: 3}
+  BufferA: {fileID: 4800000, guid: 35f2c23f65692b747ad61c4690e34ece, type: 3}
+  UsePassForBufferA: A
   BufferB: {fileID: 0}
   UsePassForBufferB: 
   BufferC: {fileID: 0}
   UsePassForBufferC: 
   BufferD: {fileID: 0}
   UsePassForBufferD: 
-  MainImage: {fileID: 4800000, guid: 87f7a7498e84ea84bbc74b85978ec3b5, type: 3}
-  UsePassForMainImage: A
+  MainImage: {fileID: 4800000, guid: 86114f0fb8ea0ef47b3c208be280a774, type: 3}
+  UsePassForMainImage: A,2,3,4
