@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: furball XsfGWN
-  m_Shader: {fileID: 4800000, guid: 73960071d36037d43bc50ccd179beebf, type: 3}
+  m_Name: Abstract Corridor MlXSWX
+  m_Shader: {fileID: 4800000, guid: 10fe72e313ebf4842991d09ded06a01a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,11 +20,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Channel0:
-        m_Texture: {fileID: 2800000, guid: 04a3aac601576b641a567fa2e49da5e1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 245467d83d925e34981a2ffabc5c9cf5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Channel1:
-        m_Texture: {fileID: 2800000, guid: 04a3aac601576b641a567fa2e49da5e1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 95e5441046feef2419ca6ef5ca144ac6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Channel2:
@@ -35,16 +35,9 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - colorUvScale: 0.1
-    - furDepth: 0.2
-    - furLayers: 64
-    - furThreshold: 1.45
-    - rayStep: 0
-    - shininess1: 50
-    - uvScale: 1
+    m_Floats: []
     m_Colors:
-    - iMouse: {r: 406, g: 241, b: -314, a: -229}
+    - iMouse: {r: 281, g: 192, b: -281, a: -192}
 --- !u!114 &4313033545916621372
 MonoBehaviour:
   m_ObjectHideFlags: 11

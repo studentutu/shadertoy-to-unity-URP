@@ -40,12 +40,12 @@ namespace UmutBebek.URP.ShaderToy
         public string UsePassForMainImage;
 
         //A is for buffer A :) Last one is M for MainImage :)
-        RenderTexture _rtA1, _rtA2, _rtB1, _rtB2, _rtC1, _rtC2, _rtD1, _rtD2, _rtM1, _rtM2;
+        RenderTexture _rtA1, _rtA2, _rtA, _rtB1, _rtB2, _rtB, _rtC1, _rtC2, _rtC, _rtD1, _rtD2, _rtD, _rtM1, _rtM2, _rtM;
 
         private List<Renderer> _renderers;
         [NonSerialized]
         public Material _m1, _m2, _m3, _m4, _m5;
-        private bool _change = true;
+        private bool _change;
 
         // Start is called before the first frame update
         // ReSharper disable once ArrangeTypeMemberModifiers
@@ -93,11 +93,11 @@ namespace UmutBebek.URP.ShaderToy
 
         private void RenderPipelineManager_beginCameraRendering(ScriptableRenderContext arg1, Camera arg2)
         {
-            CheckBuffer(BufferA, UsePassForBufferA, _m1, _rtA1, _rtA2);
-            CheckBuffer(BufferB, UsePassForBufferB, _m2, _rtB1, _rtB2);
-            CheckBuffer(BufferC, UsePassForBufferC, _m3, _rtC1, _rtC2);
-            CheckBuffer(BufferD, UsePassForBufferD, _m4, _rtD1, _rtD2);
-            CheckBuffer(MainImage, UsePassForMainImage, _m5, _rtM1, _rtM2);
+            CheckBuffer(BufferA, UsePassForBufferA, ref _m1, ref _rtA1, ref _rtA2, ref _rtA);
+            CheckBuffer(BufferB, UsePassForBufferB, ref _m2, ref _rtB1, ref _rtB2, ref _rtB);
+            CheckBuffer(BufferC, UsePassForBufferC, ref _m3, ref _rtC1, ref _rtC2, ref _rtC);
+            CheckBuffer(BufferD, UsePassForBufferD, ref _m4, ref _rtD1, ref _rtD2, ref _rtD);
+            CheckBuffer(MainImage, UsePassForMainImage, ref _m5, ref _rtM1, ref _rtM2, ref _rtM);
 
 
             //if(a1) a1.texture = _rt1a;
@@ -108,17 +108,15 @@ namespace UmutBebek.URP.ShaderToy
                 foreach (var ren in _renderers)
                 {
                     //this is just for to draw, nothing special
-                    if (_change)
-                        ren.sharedMaterial.SetTexture("_Channel0", _rtM2);
-                    else
-                        ren.sharedMaterial.SetTexture("_Channel0", _rtM1);
+                    ren.sharedMaterial.SetTexture("_Channel0", _rtM);
                 }
             }
 
             _change = !_change; //!!
         }
 
-        private void CheckBuffer(Shader buffer, string usePassForBuffer, Material m, RenderTexture r1, RenderTexture r2)
+        private void CheckBuffer(Shader buffer, string usePassForBuffer, ref Material m, 
+            ref RenderTexture r1, ref RenderTexture r2, ref RenderTexture latest)
         {
             if (buffer != null)
             {
@@ -129,13 +127,13 @@ namespace UmutBebek.URP.ShaderToy
                     for (int i = 0; i < buffers.Length; i++)
                     {
                         if (buffers[i] == "A")
-                            m.SetTexture("_Channel" + i, _change ? _rtA1 : _rtA2);
+                            m.SetTexture("_Channel" + i, _rtA);
                         if (buffers[i] == "B")
-                            m.SetTexture("_Channel" + i, _change ? _rtB1 : _rtB2);
+                            m.SetTexture("_Channel" + i, _rtB);
                         if (buffers[i] == "C")
-                            m.SetTexture("_Channel" + i, _change ? _rtC1 : _rtC2);
+                            m.SetTexture("_Channel" + i, _rtC);
                         if (buffers[i] == "D")
-                            m.SetTexture("_Channel" + i, _change ? _rtD1 : _rtD2);
+                            m.SetTexture("_Channel" + i, _rtD);
                         if (buffers[i] == "1")
                             m.SetTexture("_Channel" + i, Texture1);
                         if (buffers[i] == "2")
@@ -150,9 +148,13 @@ namespace UmutBebek.URP.ShaderToy
                 if (_change)
                 {
                     Graphics.Blit(r1, r2, m);
+                    latest = r2;
                 }
                 else
+                {
                     Graphics.Blit(r2, r1, m);
+                    latest = r1;
+                }
             }
         }
 
