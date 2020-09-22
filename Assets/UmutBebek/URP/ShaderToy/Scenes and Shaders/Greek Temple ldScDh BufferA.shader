@@ -1,4 +1,4 @@
-﻿Shader "UmutBebek/URP/ShaderToy/Greek Temple ldScDh BufferA"
+﻿Shader "UmutBebek/URP/ShaderToy/Greek Temple ldScDh Buffer A"
 {
     Properties
     {
@@ -7,9 +7,6 @@
         _Channel2("Channel2 (RGB)", 2D) = "" {}
         _Channel3("Channel3 (RGB)", 2D) = "" {}
         [HideInInspector]iMouse("Mouse", Vector) = (0,0,0,0)
-        [HideInInspector]iFrame("iFrame", int) = 0
-
-        ocean("ocean", float) = -25.0
 
 
     }
@@ -34,7 +31,6 @@
                 Name "StandardLit"
                 //Tags{"LightMode" = "UniversalForward"}
 
-                //Blend One Zero
                 //Blend[_SrcBlend][_DstBlend]
                 //ZWrite Off ZTest Always
                 //ZWrite[_ZWrite]
@@ -57,7 +53,6 @@
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-            /*#include "UnityCG.cginc"*/
             //do not add LitInput, it has already BaseMap etc. definitions, we do not need them (manually described below)
             //#include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
 
@@ -71,83 +66,87 @@
             TEXTURE2D(_Channel3);       SAMPLER(sampler_Channel3);
 
             float4 iMouse;
-            int iFrame;
-            float ocean;
-float3 sunLig;
 
 
-                    struct Attributes
-                    {
-                        float4 positionOS   : POSITION;
-                        float2 uv           : TEXCOORD0;
-                        UNITY_VERTEX_INPUT_INSTANCE_ID
-                    };
+            struct Attributes
+            {
+                float4 positionOS   : POSITION;
+                float2 uv           : TEXCOORD0;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+            };
 
-                    struct Varyings
-                    {
-                        float2 uv                       : TEXCOORD0;
-                        float4 positionCS               : SV_POSITION;
-                        float4 screenPos                : TEXCOORD1;
-                        UNITY_VERTEX_INPUT_INSTANCE_ID
-                        UNITY_VERTEX_OUTPUT_STEREO
-                    };
+            struct Varyings
+            {
+                float2 uv                       : TEXCOORD0;
+                float4 positionCS               : SV_POSITION;
+                float4 screenPos                : TEXCOORD1;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+                UNITY_VERTEX_OUTPUT_STEREO
+            };
 
-                    Varyings LitPassVertex(Attributes input)
-                    {
-                        Varyings output = (Varyings)0;
+            Varyings LitPassVertex(Attributes input)
+            {
+                Varyings output = (Varyings)0;
 
-                        UNITY_SETUP_INSTANCE_ID(input);
-                        UNITY_TRANSFER_INSTANCE_ID(input, output);
-                        UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+                UNITY_SETUP_INSTANCE_ID(input);
+                UNITY_TRANSFER_INSTANCE_ID(input, output);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-                        // VertexPositionInputs contains position in multiple spaces (world, view, homogeneous clip space)
-                        // Our compiler will strip all unused references (say you don't use view space).
-                        // Therefore there is more flexibility at no additional cost with this struct.
-                        VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
+                // VertexPositionInputs contains position in multiple spaces (world, view, homogeneous clip space)
+                // Our compiler will strip all unused references (say you don't use view space).
+                // Therefore there is more flexibility at no additional cost with this struct.
+                VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
 
-                        // TRANSFORM_TEX is the same as the old shader library.
-                        output.uv = TRANSFORM_TEX(input.uv, _Channel0);
-                        // We just use the homogeneous clip position from the vertex input
-                        output.positionCS = vertexInput.positionCS;
-                        output.screenPos = ComputeScreenPos(vertexInput.positionCS);
-                        return output;
-                    }
+                // TRANSFORM_TEX is the same as the old shader library.
+                output.uv = TRANSFORM_TEX(input.uv, _Channel0);
+                // We just use the homogeneous clip position from the vertex input
+                output.positionCS = vertexInput.positionCS;
+                output.screenPos = ComputeScreenPos(vertexInput.positionCS);
+                return output;
+            }
 
-                    #define FLT_MAX 3.402823466e+38
-                    #define FLT_MIN 1.175494351e-38
-                    #define DBL_MAX 1.7976931348623158e+308
-                    #define DBL_MIN 2.2250738585072014e-308
+            #define FLT_MAX 3.402823466e+38
+            #define FLT_MIN 1.175494351e-38
+            #define DBL_MAX 1.7976931348623158e+308
+            #define DBL_MIN 2.2250738585072014e-308
 
-                     
-                    // int;
+             #define iTimeDelta unity_DeltaTime.x
+            // float;
 
-                   #define clamp(x,minVal,maxVal) min(max(x, minVal), maxVal)
+            #define iFrame ((int)(_Time.y / iTimeDelta))
+            // int;
 
-                   float mod(float a, float b)
-                   {
-                       return a - floor(a / b) * b;
-                   }
-                   float2 mod(float2 a, float2 b)
-                   {
-                       return a - floor(a / b) * b;
-                   }
-                   float3 mod(float3 a, float3 b)
-                   {
-                       return a - floor(a / b) * b;
-                   }
-                   float4 mod(float4 a, float4 b)
-                   {
-                       return a - floor(a / b) * b;
-                   }
+           #define clamp(x,minVal,maxVal) min(max(x, minVal), maxVal)
 
-                   float4 pointSampleTex2D(Texture2D sam, SamplerState samp, float2 uv)//, float4 st) st is aactually screenparam because we use screenspace
-                   {
-                       //float2 snappedUV = ((float2)((int2)(uv * st.zw + float2(1, 1))) - float2(0.5, 0.5)) * st.xy;
-                       float2 snappedUV = ((float2)((int2)(uv * _ScreenParams.zw + float2(1, 1))) - float2(0.5, 0.5)) * _ScreenParams.xy;
-                       return  SAMPLE_TEXTURE2D(sam, samp, float4(snappedUV.x, snappedUV.y, 0, 0));
-                   }
+           float mod(float a, float b)
+           {
+               return a - floor(a / b) * b;
+           }
+           float2 mod(float2 a, float2 b)
+           {
+               return a - floor(a / b) * b;
+           }
+           float3 mod(float3 a, float3 b)
+           {
+               return a - floor(a / b) * b;
+           }
+           float4 mod(float4 a, float4 b)
+           {
+               return a - floor(a / b) * b;
+           }
 
-                   // Created by inigo quilez - iq / 2017 
+           float3 makeDarker(float3 item) {
+               return item *= 0.90;
+           }
+
+           float4 pointSampleTex2D(Texture2D sam, SamplerState samp, float2 uv)//, float4 st) st is aactually screenparam because we use screenspace
+           {
+               //float2 snappedUV = ((float2)((int2)(uv * st.zw + float2(1, 1))) - float2(0.5, 0.5)) * st.xy;
+               float2 snappedUV = ((float2)((int2)(uv * _ScreenParams.zw + float2(1, 1))) - float2(0.5, 0.5)) * _ScreenParams.xy;
+               return  SAMPLE_TEXTURE2D(sam, samp, float4(snappedUV.x, snappedUV.y, 0, 0));
+           }
+
+           // Created by inigo quilez - iq / 2017 
 // License Creative Commons Attribution - NonCommercial - ShareAlike 3.0 Unported License. 
 
 
@@ -177,15 +176,11 @@ float hash1(float2 p)
 
 float hash(uint n)
  {
-     //n = (n << 13U) ^ n;
-    n = (n * 8192) ^ n;
+     n = (n << 13U) ^ n;
     n = n * (n * n * 15731U + 789221U) + 1376312589U;
     // floating pointExtended conversion from http: // iquilezles.org / www / articles / sfrand / sfrand.htm 
-   /*float a = uintBitsToFloat((n >> 9U) | 0x3f800000U) - 1.0;
-   return a;*/
-    //return asfloat(asuint((n >> 9U) | 0x3f800000U)) - 1.0;
-    float a = asfloat(asuint(n * 0.001953125) | 0x3f800000U) - 1.0;
-    return a;
+    //return uintBitsToFloat((n >> 9U) | 0x3f800000U) - 1.0;
+    return float(((n >> 9U) | 0x3f800000U)) - 1.0;
 }
 
 float2 hash2(float n) { return frac(sin(float2 (n , n + 1.0)) * float2 (43758.5453123 , 22578.1459123)); }
@@ -308,7 +303,7 @@ float4 textureGood(Texture2D sam, SamplerState samp, in float2 uv)
      return lerp(lerp(rg1 , rg2 , f.x) , lerp(rg3 , rg4 , f.x) , f.y);
  }
 
-//#define ZEROExtended ( min ( iFrame , 0 ) ) 
+#define ZEROExtended ( min ( iFrame , 0 ) ) 
 
 // -- -- -- -- -- -- 
 
@@ -322,7 +317,7 @@ float terrain(in float2 p)
     return h;
  }
 
-
+static const float ocean = -25.0;
 
 float3 temple(in float3 p)
  {
@@ -452,9 +447,9 @@ float3 calcNormal(in float3 p , in float t)
 #else 
     // inspired by tdhooper and klems - a way to prevent the compiler from inlining map ( ) 4 times 
    float3 n = float3 (0.0 , 0.0 , 0.0);
-   for (int i = 0; i < 4; i++)
+   for (int i = ZEROExtended; i < 4; i++)
     {
-       float3 e = 0.5773 * (2.0 * float3 ((int((i + 3) * 0.5) & 1) , (int(i * 0.5) & 1) , (i & 1)) - 1.0);
+       float3 e = 0.5773 * (2.0 * float3 ((((i + 3) >> 1) & 1) , ((i >> 1) & 1) , (i & 1)) - 1.0);
        n += e * map(p + e * 0.001 * t).x;
     }
    return normalize(n);
@@ -495,7 +490,7 @@ float3 intersect(in float3 ro , in float3 rd)
     return res;
  }
 
-float4 textureBox(in Texture2D tex, in SamplerState samp, in float3 pos , in float3 nor)
+float4 textureBox(in Texture2D tex, SamplerState samp, in float3 pos , in float3 nor)
  {
     float4 cx = SAMPLE_TEXTURE2D(tex , samp, pos.yz);
     float4 cy = SAMPLE_TEXTURE2D(tex , samp, pos.xz);
@@ -524,7 +519,7 @@ float calcShadow(in float3 ro , in float3 rd , float k)
 float calcOcclusion(in float3 pos , in float3 nor , float ra)
  {
     float occ = 0.0;
-    for (int i = 0; i < 32; i++)
+    for (int i = ZEROExtended; i < 32; i++)
      {
         float h = 0.01 + 4.0 * pow(float(i) / 31.0 , 2.0);
         float2 an = hash2(ra + float(i) * 13.1) * float2 (3.14159 , 6.2831);
@@ -536,7 +531,7 @@ float calcOcclusion(in float3 pos , in float3 nor , float ra)
  }
 
 
-
+static float3 sunLig = normalize(float3 (0.7 , 0.1 , 0.4));
 
 float3 skyColor(in float3 ro , in float3 rd)
  {
@@ -601,13 +596,6 @@ float3x3 setCamera(in float3 ro , in float3 ta , float cr)
 half4 LitPassFragment(Varyings input) : SV_Target  {
 UNITY_SETUP_INSTANCE_ID(input);
 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
-
-sunLig = normalize(float3(0.7, 0.1, 0.4));
-
-float iTimeDelta = unity_DeltaTime.x;
-// float;
-iFrame = ((int)(_Time.y / iTimeDelta));
-
  half4 fragColor = half4 (1 , 1 , 1 , 1);
  float2 fragCoord = ((input.screenPos.xy) / (input.screenPos.w + FLT_MIN)) * _ScreenParams.xy;
      float isThumbnail = step(_ScreenParams.x , 499.0);
@@ -618,12 +606,11 @@ iFrame = ((int)(_Time.y / iTimeDelta));
 
      uint2 px = uint2(fragCoord);
      float ran = hash(px.x + 1920U * px.y + (1920U * 1080U) * uint (iFrame * 0));
-     //float ran = hash(px.x + px.y);
 
      #ifdef STATICCAM 
      float an = -0.96;
      #else 
-     float an = -0.96 + sin(_Time.y * 0.05) * 0.1;
+     float an = -0.96 + sin(_Time.y * 0.25) * 0.1;
      #endif 
      float ra = 70.0;
      float fl = 3.0;
@@ -782,7 +769,7 @@ iFrame = ((int)(_Time.y / iTimeDelta));
      // reproject from previous frame and average 
     // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
     #ifdef STATICCAM 
-       float3 ocol = pointSampleTex2D(_Channel3 , sampler_Channel3 , int2 (fragCoord - 0.5) , 0).xyz;
+       float3 ocol = pointSampleTex2D(_Channel3 , sampler_Channel3 , int2 (fragCoord - 0.5) ).xyz;
        if (iFrame == 0) ocol = col;
        col = lerp(ocol , col , 0.05);
        fragColor = float4 (col , 1.0);
@@ -795,7 +782,7 @@ iFrame = ((int)(_Time.y / iTimeDelta));
        // world space 
       float4 wpos = float4 (ro + rd * resT , 1.0);
       // camera space 
-     float3 cpos = mul(wpos , oldCam).xyz; // note inverse multiply 
+     float3 cpos = (mul(wpos , oldCam)).xyz; // note inverse multiply 
       // ndc space 
      float2 npos = fl * cpos.xy / cpos.z;
      // screen space 

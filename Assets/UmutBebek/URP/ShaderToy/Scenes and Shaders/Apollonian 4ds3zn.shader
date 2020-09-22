@@ -1,4 +1,4 @@
-﻿Shader "UmutBebek/URP/ShaderToy/Greek Temple ldScDh MainImage"
+﻿Shader "UmutBebek/URP/ShaderToy/Apollonian 4ds3zn"
 {
     Properties
     {
@@ -146,53 +146,158 @@
                return  SAMPLE_TEXTURE2D(sam, samp, float4(snappedUV.x, snappedUV.y, 0, 0));
            }
 
-           // Created by inigo quilez - iq / 2017 
+           // Created by inigo quilez - iq / 2013 
 // License Creative Commons Attribution - NonCommercial - ShareAlike 3.0 Unported License. 
-
-// You can buy a metal print of this shader here: 
-// https: // www.redbubble.com / i / metal - print / Greek - Temple - by - InigoQuilez / 39845587.0JXQP 
-
-// A basic temple model. No global illumination , all cheated and composed to camera: 
 // 
-// - the terrain is false perspective 
-// - there are two different sun directions for foreground and background. 
-// - ambient occlusion is mostly painted by hand 
-// - bounce lighting is also painted by hand 
+// I can't recall where I learnt about this fractal. 
 // 
-// This shader was made as a continuation to a live coding session I did for the students 
-// of UPENN. After the initial live coded session I decided to rework it and improve it , 
-// and that turned out to be a bit of a pain because when looking for the final look I got 
-// trapped in more local minima that I usually do and it took me a while to leave them. 
+// Coloring and fake occlusions are done by orbit trapping , as usual. 
 
 
+// Antialiasing level 
+#if HW_PERFORMANCE == 0 
+#define AA 1 
+#else 
+#define AA 2 // Make it 3 if you have a fast machine 
+#endif 
+
+float4 orb;
+
+float map(float3 p , float s)
+ {
+     float scale = 1.0;
+
+     orb = float4 (1000.0, 1000.0, 1000.0, 1000.0);
+
+     for (int i = 0; i < 8; i++)
+      {
+          p = -1.0 + 2.0 * frac(0.5 * p + 0.5);
+
+          float r2 = dot(p , p);
+
+        orb = min(orb , float4 (abs(p) , r2));
+
+          float k = s / r2;
+          p *= k;
+          scale *= k;
+      }
+
+     return 0.25 * abs(p.y) / scale;
+ }
+
+float trace(in float3 ro , in float3 rd , float s)
+ {
+     float maxd = 30.0;
+    float t = 0.01;
+    for (int i = 0; i < 512; i++)
+     {
+         float precis = 0.001 * t;
+
+         float h = map(ro + rd * t , s);
+        if (h < precis || t > maxd) break;
+        t += h;
+     }
+
+    if (t > maxd) t = -1.0;
+    return t;
+ }
+
+float3 calcNormal(in float3 pos , in float t , in float s)
+ {
+    float precis = 0.001 * t;
+
+    float2 e = float2 (1.0 , -1.0) * precis;
+    return normalize(e.xyy * map(pos + e.xyy , s) +
+                           e.yyx * map(pos + e.yyx , s) +
+                           e.yxy * map(pos + e.yxy , s) +
+                      e.xxx * map(pos + e.xxx , s));
+ }
+
+float3 render(in float3 ro , in float3 rd , in float anim)
+ {
+    // trace 
+   float3 col = float3 (0.0 , 0.0 , 0.0);
+   float t = trace(ro , rd , anim);
+   if (t > 0.0)
+    {
+       float4 tra = orb;
+       float3 pos = ro + t * rd;
+       float3 nor = calcNormal(pos , t , anim);
+
+       // lighting 
+      float3 light1 = float3 (0.577 , 0.577 , -0.577);
+      float3 light2 = float3 (-0.707 , 0.000 , 0.707);
+      float key = clamp(dot(light1 , nor) , 0.0 , 1.0);
+      float bac = clamp(0.2 + 0.8 * dot(light2 , nor) , 0.0 , 1.0);
+      float amb = (0.7 + 0.3 * nor.y);
+      float ao = pow(clamp(tra.w * 2.0 , 0.0 , 1.0) , 1.2);
+
+      float3 brdf = 1.0 * float3 (0.40 , 0.40 , 0.40) * amb * ao;
+      brdf += 1.0 * float3 (1.00 , 1.00 , 1.00) * key * ao;
+      brdf += 1.0 * float3 (0.40 , 0.40 , 0.40) * bac * ao;
+
+      // material 
+     float3 rgb = float3 (1.0 , 1.0 , 1.0);
+     rgb = lerp(rgb , float3 (1.0 , 0.80 , 0.2) , clamp(6.0 * tra.y , 0.0 , 1.0));
+     rgb = lerp(rgb , float3 (1.0 , 0.55 , 0.0) , pow(clamp(1.0 - 2.0 * tra.z , 0.0 , 1.0) , 8.0));
+
+     // color 
+    col = rgb * brdf * exp(-0.2 * t);
+ }
+
+return sqrt(col);
+}
 
 half4 LitPassFragment(Varyings input) : SV_Target  {
 UNITY_SETUP_INSTANCE_ID(input);
 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
  half4 fragColor = half4 (1 , 1 , 1 , 1);
  float2 fragCoord = ((input.screenPos.xy) / (input.screenPos.w + FLT_MIN)) * _ScreenParams.xy;
-      int2 p = int2 (fragCoord - 0.5);
+     float time = _Time.y * 0.25 + 0.01 * iMouse.x;
+     float anim = 1.1 + 0.5 * smoothstep(-0.3 , 0.3 , cos(0.1 * _Time.y));
 
-     float3 col = pointSampleTex2D(_Channel0 , sampler_Channel0 , p ).xyz;
+     float3 tot = float3 (0.0 , 0.0 , 0.0);
+     #if AA > 1 
+     for (int jj = 0; jj < AA; jj++)
+     for (int ii = 0; ii < AA; ii++)
+     #else 
+     int ii = 1 , jj = 1;
+     #endif 
+      {
+         float2 q = fragCoord.xy + float2 (float(ii) , float(jj)) / float(AA);
+         float2 p = (2.0 * q - _ScreenParams.xy) / _ScreenParams.y;
 
-     float2 q = fragCoord / _ScreenParams.xy;
-     col *= 0.8 + 0.2 * pow(16.0 * q.x * q.y * (1.0 - q.x) * (1.0 - q.y) , 0.2);
+         // camera 
+        float3 ro = float3 (2.8 * cos(0.1 + .33 * time) , 0.4 + 0.30 * cos(0.37 * time) , 2.8 * cos(0.5 + 0.35 * time));
+        float3 ta = float3 (1.9 * cos(1.2 + .41 * time) , 0.4 + 0.10 * cos(0.27 * time) , 1.9 * cos(2.0 + 0.38 * time));
+        float roll = 0.2 * cos(0.1 * time);
+        float3 cw = normalize(ta - ro);
+        float3 cp = float3 (sin(roll) , cos(roll) , 0.0);
+        float3 cu = normalize(cross(cw , cp));
+        float3 cv = normalize(cross(cu , cw));
+        float3 rd = normalize(p.x * cu + p.y * cv + 2.0 * cw);
+
+        tot += render(ro , rd , anim);
+     }
+
+    tot = tot / float(AA * AA);
+
+     fragColor = float4 (tot , 1.0);
+     return fragColor;
+
+ }
 
 
-      fragColor = float4 (col , 1.0);
-  return fragColor;
- } 
-
-    //half4 LitPassFragment(Varyings input) : SV_Target
-    //{
-    //    [FRAGMENT]
-    //    //float2 uv = input.uv;
-    //    //SAMPLE_TEXTURE2D_LOD(_BaseMap, sampler_BaseMap, uv + float2(-onePixelX, -onePixelY), _Lod);
-    //    //_ScreenParams.xy 
-    //    //half4 color = half4(1, 1, 1, 1);
-    //    //return color;
-    //}
-    ENDHLSL
+ //half4 LitPassFragment(Varyings input) : SV_Target
+ //{
+ //    [FRAGMENT]
+ //    //float2 uv = input.uv;
+ //    //SAMPLE_TEXTURE2D_LOD(_BaseMap, sampler_BaseMap, uv + float2(-onePixelX, -onePixelY), _Lod);
+ //    //_ScreenParams.xy 
+ //    //half4 color = half4(1, 1, 1, 1);
+ //    //return color;
+ //}
+ ENDHLSL
 }
         }
 }
